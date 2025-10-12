@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/modelo/Proveedor.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/interfaces/IProveedorDAO.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/dao/ProveedorDAO.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/modelo/Recetario.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/interfaces/IRecetarioDAO.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/dao/RecetarioDAO.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/modelo/Rol.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/Panel/PanelReportes.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/util/ReporteProductosAVencer.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/util/ReporteStockRiesgo.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/util/ReporteValorInventario.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/util/ReporteVentasDia.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/util/ReporteVentasMes.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/controlador/CtrlReporte.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/servicio/ReporteService.java</file>
+            <file>file:/C:/Users/jojhi/OneDrive/Documentos/NetBeansProjects/PeruFarmaReal/src/interfaces/IUsuarioDAO.java</file>
+        </group>
+    </open-files>
+</project-private>
