@@ -1,65 +1,82 @@
 package controlador;
 
-import Panel.PanelReportes;
-import servicio.ReporteService;
+import Panel.*;
+import Panel.Reportes.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 /**
- * Controlador del módulo de Reportes.
- * Gestiona los eventos del PanelReportes y coordina la generación de PDFs.
- * Cumple con SOLID: separa la lógica de presentación (vista) de la lógica de negocio (servicio).
+ * Controlador principal del módulo de reportes.
+ * Administra el PanelReportes (menú lateral o superior)
+ * y muestra el subpanel correspondiente mediante CardLayout.
+ *
+ * Cumple con SOLID (Responsabilidad Única):
+ * - No contiene lógica de negocio.
+ * - Solo gestiona la navegación entre subpaneles.
  */
 public class CtrlReporte implements ActionListener {
 
-    private final PanelReportes vista;
-    private final ReporteService servicio;
+    private final PanelReportes panelPrincipal;
+    private final JPanel contenedor; // Contenedor con CardLayout
+    private final CardLayout cardLayout;
 
-    public CtrlReporte(PanelReportes vista) {
-        this.vista = vista;
-        this.servicio = new ReporteService();
+    // Subpaneles
+    private final PanelProductosAVencer panelProductosVencer;
+    private final PanelStockRiesgo panelStockRiesgo;
+    private final PanelValorInventario panelValorInventario;
+    private final PanelVentasDia panelVentasDia;
+    private final PanelVentasMes panelVentasMes;
 
-        // Asociar los botones a eventos
-        vista.getBtnProductosVencer().addActionListener(this);
-        vista.getBtnStockRiesgo().addActionListener(this);
-        vista.getBtnValorInventario().addActionListener(this);
-        vista.getBtnVentasDia().addActionListener(this);
-        vista.getBtnVentasMes().addActionListener(this);
+    public CtrlReporte(PanelReportes panelPrincipal, JPanel contenedor, CardLayout cardLayout) {
+        this.panelPrincipal = panelPrincipal;
+        this.contenedor = contenedor;
+        this.cardLayout = cardLayout;
+
+        // ===== Inicializar subpaneles =====
+        panelProductosVencer = new PanelProductosAVencer();
+        panelStockRiesgo = new PanelStockRiesgo();
+        panelValorInventario = new PanelValorInventario();
+        panelVentasDia = new PanelVentasDia();
+        panelVentasMes = new PanelVentasMes();
+
+        // ===== Asignar controladores a cada subpanel =====
+        new CtrlProductosAVencer(panelProductosVencer);
+        new CtrlStockRiesgo(panelStockRiesgo);
+        new CtrlValorInventario(panelValorInventario);
+        new CtrlVentasDia(panelVentasDia);
+        new CtrlVentasMes(panelVentasMes);
+
+        // ===== Añadir subpaneles al contenedor =====
+        contenedor.add(panelProductosVencer, "productos");
+        contenedor.add(panelStockRiesgo, "stock");
+        contenedor.add(panelValorInventario, "valor");
+        contenedor.add(panelVentasDia, "dia");
+        contenedor.add(panelVentasMes, "mes");
+
+        // ===== Escuchar los botones principales =====
+        panelPrincipal.getBtnProductosVencer().addActionListener(this);
+        panelPrincipal.getBtnStockRiesgo().addActionListener(this);
+        panelPrincipal.getBtnValorInventario().addActionListener(this);
+        panelPrincipal.getBtnVentasDia().addActionListener(this);
+        panelPrincipal.getBtnVentasMes().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-        boolean ok = false;
-        String tipo = "";
 
-        if (src == vista.getBtnProductosVencer()) {
-            tipo = "Productos a vencer";
-            ok = servicio.generarProductosAVencer();
-        } else if (src == vista.getBtnStockRiesgo()) {
-            tipo = "Stocks en riesgo";
-            ok = servicio.generarStockRiesgo();
-        } else if (src == vista.getBtnValorInventario()) {
-            tipo = "Valoración de inventario";
-            ok = servicio.generarValorInventario();
-        } else if (src == vista.getBtnVentasDia()) {
-            tipo = "Ventas del día";
-            ok = servicio.generarVentasDia();
-        } else if (src == vista.getBtnVentasMes()) {
-            tipo = "Ventas del mes";
-            ok = servicio.generarVentasMes();
-        }
-
-        // Mostrar resultado
-        if (ok) {
-            JOptionPane.showMessageDialog(null,
-                    "✅ Reporte generado correctamente: " + tipo,
-                    "Reporte generado", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null,
-                    "❌ Error al generar el reporte: " + tipo,
-                    "Error", JOptionPane.ERROR_MESSAGE);
+        if (src == panelPrincipal.getBtnProductosVencer()) {
+            cardLayout.show(contenedor, "productos");
+        } else if (src == panelPrincipal.getBtnStockRiesgo()) {
+            cardLayout.show(contenedor, "stock");
+        } else if (src == panelPrincipal.getBtnValorInventario()) {
+            cardLayout.show(contenedor, "valor");
+        } else if (src == panelPrincipal.getBtnVentasDia()) {
+            cardLayout.show(contenedor, "dia");
+        } else if (src == panelPrincipal.getBtnVentasMes()) {
+            cardLayout.show(contenedor, "mes");
         }
     }
 }

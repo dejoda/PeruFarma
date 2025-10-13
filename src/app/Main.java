@@ -36,7 +36,7 @@ public class Main {
     }
 }
 */
-
+/*
 package app;
 
 import dao.ProductoDAO;
@@ -52,5 +52,47 @@ public class Main {
         for (Producto p : lista) {
             System.out.println(p.getIdProducto() + " - " + p.getNombre() + " | Stock: " + p.getDescripcion());
         }
+    }
+}*/
+package app;
+
+import javax.swing.*;
+import java.awt.*;
+import Panel.PanelReportes;
+import controlador.CtrlReporte;
+
+/**
+ * Main temporal para probar el módulo de reportes
+ * sin el dashboard completo.
+ */
+public class Main {
+    public static void main(String[] args) {
+        try {
+            // Look & Feel moderno
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception ignored) {}
+
+        // Crear ventana principal de prueba
+        JFrame frame = new JFrame("🧾 Reportes - PeruFarma");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1100, 650);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(new BorderLayout());
+
+        // ====== Menú principal de reportes ======
+        PanelReportes panelReportes = new PanelReportes();
+        panelReportes.setPreferredSize(new Dimension(280, 0));
+        frame.add(panelReportes, BorderLayout.WEST);
+
+        // ====== Contenedor central (donde se mostrarán los subpaneles) ======
+        CardLayout cardLayout = new CardLayout();
+        JPanel contenedor = new JPanel(cardLayout);
+        frame.add(contenedor, BorderLayout.CENTER);
+
+        // ====== Conectar controlador principal ======
+        new CtrlReporte(panelReportes, contenedor, cardLayout);
+
+        // ====== Mostrar ventana ======
+        frame.setVisible(true);
     }
 }
