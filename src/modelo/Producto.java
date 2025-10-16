@@ -68,4 +68,20 @@ public class Producto {
 
     public boolean isEstado() { return estado; }
     public void setEstado(boolean estado) { this.estado = estado; }
+    
+ // Campos adicionales del inventario
+    private int stock;
+    private int stockMinimo;
+    private String estadoStock;
+
+    // Getters y setters
+    public int getStock() { return stock; }
+    public void setStock(int stock) { this.stock = stock; }
+
+    public int getStockMinimo() { return stockMinimo; }
+    public void setStockMinimo(int stockMinimo) { this.stockMinimo = stockMinimo; }
+
+    public String getEstadoStock() { return estadoStock; }
+    public void setEstadoStock(String estadoStock) { this.estadoStock = estadoStock; }
+
 }

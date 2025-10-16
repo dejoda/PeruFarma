@@ -2,7 +2,6 @@ package controlador;
 
 import Panel.*;
 import Panel.Reportes.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
